@@ -29,3 +29,6 @@ yarn.lock
 # ide
 .idea
 *.iml
+
+# 锁文件不纳入版本库，CI 中按 package.json 重新解析
+pnpm-lock.yaml
