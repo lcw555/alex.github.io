@@ -1,12 +1,52 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 400" width="1200" height="400">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 560" width="1600" height="560" preserveAspectRatio="xMidYMid slice">
   <defs>
-    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#1e3a8a"/>
-      <stop offset="50%" stop-color="#4f46e5"/>
-      <stop offset="100%" stop-color="#0891b2"/>
+    <linearGradient id="paper" x1="0" y1="0" x2="0.35" y2="1">
+      <stop offset="0%" stop-color="#fbf5ea"/>
+      <stop offset="55%" stop-color="#f3e9d9"/>
+      <stop offset="100%" stop-color="#e9dbc6"/>
     </linearGradient>
+
+    <radialGradient id="washA" cx="0.22" cy="0.18" r="0.55">
+      <stop offset="0%" stop-color="#c9784f" stop-opacity="0.14"/>
+      <stop offset="60%" stop-color="#c9784f" stop-opacity="0.03"/>
+      <stop offset="100%" stop-color="#c9784f" stop-opacity="0"/>
+    </radialGradient>
+
+    <radialGradient id="washB" cx="0.82" cy="0.88" r="0.62">
+      <stop offset="0%" stop-color="#8c6b4f" stop-opacity="0.10"/>
+      <stop offset="70%" stop-color="#8c6b4f" stop-opacity="0.02"/>
+      <stop offset="100%" stop-color="#8c6b4f" stop-opacity="0"/>
+    </radialGradient>
+
+    <linearGradient id="rule" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#b07a55" stop-opacity="0"/>
+      <stop offset="45%" stop-color="#b07a55" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#b07a55" stop-opacity="0"/>
+    </linearGradient>
+
+    <filter id="grain">
+      <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" stitchTiles="stitch"/>
+      <feColorMatrix type="saturate" values="0"/>
+    </filter>
   </defs>
-  <rect width="1200" height="400" fill="url(#bg)"/>
-  <circle cx="980" cy="90" r="220" fill="#ffffff" opacity="0.06"/>
-  <circle cx="220" cy="330" r="160" fill="#ffffff" opacity="0.05"/>
+
+  <rect width="1600" height="560" fill="url(#paper)"/>
+  <rect width="1600" height="560" fill="url(#washA)"/>
+  <rect width="1600" height="560" fill="url(#washB)"/>
+
+  <!-- 极淡的横线，模拟稿纸印刷线 -->
+  <g stroke="#b07a55" stroke-opacity="0.10" stroke-width="1">
+    <line x1="0" y1="168" x2="1600" y2="168"/>
+    <line x1="0" y1="280" x2="1600" y2="280"/>
+    <line x1="0" y1="392" x2="1600" y2="392"/>
+  </g>
+
+  <!-- 一道手绘感的弧线，避免整张图过于规整 -->
+  <path d="M -40 400 C 300 300, 620 470, 940 360 S 1400 250, 1660 330"
+        fill="none" stroke="#a96f4c" stroke-opacity="0.22" stroke-width="2" stroke-linecap="round"/>
+
+  <rect y="556" width="1600" height="2" fill="url(#rule)"/>
+
+  <!-- 纸张颗粒 -->
+  <rect width="1600" height="560" filter="url(#grain)" opacity="0.06"/>
 </svg>

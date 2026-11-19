@@ -9,7 +9,7 @@ rainbow-light = linear-gradient(to right, oklch(0.80 0.10 0), oklch(0.80 0.10 30
 rainbow-dark = linear-gradient(to right, oklch(0.70 0.10 0), oklch(0.70 0.10 30), oklch(0.70 0.10 60), oklch(0.70 0.10 90), oklch(0.70 0.10 120), oklch(0.70 0.10 150), oklch(0.70 0.10 180), oklch(0.70 0.10 210), oklch(0.70 0.10 240), oklch(0.70 0.10 270), oklch(0.70 0.10 300), oklch(0.70 0.10 330), oklch(0.70 0.10 360))
 
 :root
-  --radius-large 1rem
+  --radius-large 0.75rem
   --content-delay 150ms
 
 /* An util to define variables that vary with light and dark mode */
@@ -96,3 +96,45 @@ define({
   --toc-width: calc((100vw - var(--page-width)) / 2 - 1rem)
   --toc-item-active: oklch(0.70 0.13 var(--hue)) oklch(0.35 0.07 var(--hue))
 })
+
+/* ─────────────────────────────────────────────────────────────
+   暖色纸感覆盖层
+   在默认调色板之后重新定义少数几个关键色，让整体从冷灰蓝
+   切换到米白纸面 + 陶土强调。其余派生变量由 --hue 自动跟随。
+   ───────────────────────────────────────────────────────────── */
+define({
+  /* 页面底色：米白，带一点暖黄，不是纯白 */
+  --page-bg: oklch(0.964 0.014 76) oklch(0.185 0.011 62)
+
+  /* 卡片：比底色再亮一点点，模拟纸张反光 */
+  --card-bg: oklch(0.995 0.006 85) oklch(0.233 0.011 62)
+
+  /* 强调色：陶土红棕，压低亮度避免刺眼 */
+  --primary: oklch(0.58 0.125 44) oklch(0.76 0.095 62)
+
+  --deep-text: oklch(0.29 0.017 58) oklch(0.94 0.012 80)
+  --btn-content: oklch(0.50 0.10 46) oklch(0.78 0.075 62)
+
+  /* 浮层 / 搜索面板 */
+  --float-panel-bg: oklch(0.992 0.007 85) oklch(0.215 0.011 62)
+
+  /* 目录高亮、选中、代码块 */
+  --toc-item-active: oklch(0.55 0.115 44) oklch(0.78 0.08 62)
+  --selection-bg: oklch(0.92 0.045 72) oklch(0.40 0.07 62)
+  --codeblock-bg: oklch(0.22 0.012 62) oklch(0.20 0.012 62)
+  --codeblock-topbar-bg: oklch(0.30 0.014 62) oklch(0.14 0.010 62)
+
+  /* 分隔线：暖灰，不要纯黑透明。注意 Stylus 里 "/" 是除法，必须用 rgba() */
+  --line-divider: rgba(58, 46, 36, 0.10) rgba(250, 246, 238, 0.10)
+  --line-color: rgba(58, 46, 36, 0.12) rgba(250, 246, 238, 0.12)
+  --meta-divider: rgba(58, 46, 36, 0.22) rgba(250, 246, 238, 0.22)
+
+  /* 卡片描边（自定义变量，供 main.css 使用） */
+  --card-border: oklch(0.90 0.014 76) oklch(0.30 0.012 62)
+
+  /* 文章卡右侧的“进入”按钮：默认不要底色，否则是一块突兀的色块 */
+  --enter-btn-bg: transparent transparent
+  --enter-btn-bg-hover: oklch(0.945 0.022 72) oklch(0.30 0.028 62)
+  --enter-btn-bg-active: oklch(0.905 0.032 72) oklch(0.35 0.032 62)
+})
+

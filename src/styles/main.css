@@ -150,3 +150,56 @@
     }
   }
 }
+/* ─────────────────────────────────────────────────────────────
+   暖色纸感排版层
+   目标：读起来像一本装订简单的册子，而不是一个 SaaS 仪表盘。
+   三件事——衬线标题、纸面纹理、克制的卡片描边。
+   ───────────────────────────────────────────────────────────── */
+
+/* 1. 标题用衬线：中文优先思源宋体/Songti，英文走 Georgia */
+h1, h2, h3, h4, h5, h6 {
+    font-family: Georgia, "Songti SC", "STSong", "Noto Serif CJK SC",
+        "Source Han Serif SC", "SimSun", "Times New Roman", serif;
+    letter-spacing: 0.015em;
+    font-weight: 600;
+}
+
+/* 2. 正文也用衬线，行高拉开——纸感的来源是留白，不是颜色 */
+.custom-md p,
+.custom-md li,
+.custom-md blockquote {
+    font-family: Georgia, "Songti SC", "STSong", "Noto Serif CJK SC",
+        "Source Han Serif SC", "SimSun", "Times New Roman", serif;
+    line-height: 1.9;
+    letter-spacing: 0.008em;
+}
+
+/* 3. 卡片：细描边取代纯白浮起，边界清楚才像纸页 */
+:root {
+    --paper-shadow: 0 1px 2px rgba(58, 46, 36, 0.05), 0 10px 28px -16px rgba(58, 46, 36, 0.16);
+  }
+.card-base {
+    border: 1px solid var(--card-border);
+    box-shadow: var(--paper-shadow);
+}
+.dark .card-base {
+    box-shadow: none;
+}
+
+/* 4. 极淡的纸纹，只在浅色下出现，压到几乎看不见 */
+:root:not(.dark) body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    opacity: 0.028;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='0.55'/%3E%3C/svg%3E");
+    background-size: 180px 180px;
+}
+
+/* 5. 链接下划线改成实线细线，比虚线的“文档感”更轻 */
+.custom-md a {
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+}
