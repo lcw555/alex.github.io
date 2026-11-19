@@ -33,13 +33,16 @@ pnpm dev        # 本地预览 http://localhost:4321
 
 大部分个人信息都在 `src/config.ts` 里：站名、副标题、头像、导航栏、社交链接、主题色。
 
-- 头像：`src/assets/images/avatar.png`（直接替换同名文件即可）
+- 头像：`public/avatar.svg`
+- 站点图标：`public/favicon.svg`
 - 站点域名：`astro.config.mjs` 的 `site` 字段
 - 关于页：`src/content/spec/about.md`
 
 ## 部署
 
 推送到 `main` 触发 `.github/workflows/deploy.yml`：装依赖 → 构建 → 上传 artifact → 发布到 Pages。
+
+依赖锁定在 `pnpm-lock.yaml`，CI 用 `--frozen-lockfile` 安装；升级依赖请本地 `pnpm update` 后一并提交锁文件。
 
 首次使用需在仓库 **Settings › Pages › Source** 选择 **GitHub Actions**。
 
